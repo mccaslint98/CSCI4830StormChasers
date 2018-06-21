@@ -1,7 +1,6 @@
 body {
 	text-align: left;
 	font-family: arial, sans-serif;
-	background-color: #4286f4;
 } 
 
 table {
@@ -12,9 +11,13 @@ table {
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid #000000;
     text-align: left;
     padding: 8px;
+}
+
+th {
+	background-color: #4286f4;
 }
 
 tr:nth-child(even) {
