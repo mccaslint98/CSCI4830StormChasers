@@ -1,4 +1,22 @@
 body {
-	text-align: center;
-	background-color: #f0e8c5;
+	text-align: left;
+	font-family: arial, sans-serif;
+	background-color: #4286f4;
 } 
+
+table {
+	table-layout: fixed;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
