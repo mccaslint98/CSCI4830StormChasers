@@ -1,0 +1,33 @@
+body {
+	text-align: left;
+	font-family: arial, sans-serif;
+} 
+
+table {
+	table-layout: fixed;
+    font-family: arial, sans-serif;
+    border-collapse: no;
+    width: 100%;
+}
+
+td, th {
+    border: none;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+	background-color: #5480c7;
+}
+
+tr:nth-child(2) {
+    background-color: #cbcbfc;
+}
+tr:nth-child(3) {
+    background-color: #eceff8;
+}
+
+#hourlyTable {
+    font-size:10px;
+    text-align:center;
+}
