@@ -3,40 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src.main.java.com.weather;
+package com.weather.web;
 
-import java.util.Map;
+import com.weather.domain.DailyMessageWeatherResponse;
+import com.weather.service.WeatherServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
  * @author yifan
  */
-
 @Controller
 public class WeatherController {
-    
+
     //private WeatherServlet wServlet = new WeatherServlet();
-    
 //    @RequestMapping("/#current")
 //    public String home(Map<String, Object> model){
 //        model.put("message", "Current");
 //        return "Current.html";
 //    }
-//    
-//    @RequestMapping("/#faq")
-//    public String faq(Map<String, Object> model) {
-//        model.put("message", "FAQ Page");
-//        return "FAQ.html";
-//    }
-    
-    
+//
 //    @PostMapping("/daily")
 //    public void daily(Map<String, Object> model, HttpServletRequest req, HttpServletResponse resp)
 //    throws ServletException, IOException {
 //        model.put("message", "Daily Page");
-//        
+//
 //        String city = req.getParameter("city");
 //        String source = req.getParameter("source");
 //        System.out.println(city);
@@ -48,10 +44,21 @@ public class WeatherController {
 //        rd.forward(req, resp);
 //
 //    }
-    
-    @RequestMapping("/")
-    public String welcome(Map<String, Object> model){
-        model.put("message", "Hello World");
-        return "welcome";
+    @Autowired
+    WeatherServiceImpl weatherService;
+
+    @RequestMapping("/daily/{city}")
+    public ResponseEntity<DailyMessageWeatherResponse> getDaily(@PathVariable String city) {
+        return ResponseEntity.ok(weatherService.getDailytForecast(city));
+    }
+
+    @GetMapping("/faq")
+    public String faq() {
+        return "FAQ";
+    }
+
+    @GetMapping("/cur")
+    public String cur() {
+        return "Current";
     }
 }
