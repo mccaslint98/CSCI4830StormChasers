@@ -1,4 +1,4 @@
-package view;
+package src.main.java.com.weather.view;
 
 public class Weather {
 	private String city;

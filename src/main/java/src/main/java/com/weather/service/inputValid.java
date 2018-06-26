@@ -1,4 +1,4 @@
-package src.main.java.weather.service;
+package src.main.java.com.weather.service;
 
 public class inputValid {
 	private String Date;

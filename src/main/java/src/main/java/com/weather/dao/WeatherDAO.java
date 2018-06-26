@@ -1,7 +1,7 @@
-package src.main.java.weather.dao;
+package src.main.java.com.weather.dao;
 
 import java.util.ArrayList;
-import view.Weather;
+import src.main.java.com.weather.view.Weather;
 
 public class WeatherDAO {
 	public ArrayList<Weather> getWeather(String city,String source){
