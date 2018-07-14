@@ -25,20 +25,43 @@ public class WeatherAppTest{
     }
 
     @Test
-    public void testLoginPage() {
+    public void testFrontPage() {
         beginAt("index.jsp"); 
-        assertTitleEquals("Login");
-        assertLinkPresent("home");
-        clickLink("home");
-        assertTitleEquals("Home");
+        
+        assertTitleEquals("stormchaserweather.herokuapp.com");
+        assertLinkPresent("FAQ");
+        assertLinkPresent("Current");
+        
+        clickLink("FAQ");
+        assertTitleEquals("FAQ!");
+        clickLink("current");
+        assertTitleEquals("current");
     }
     
     @Test
-    public void testHomePage() {
-        beginAt("home.jsp"); 
-        assertTitleEquals("Home");
-        assertLinkPresent("login");
-        clickLink("login");
-        assertTitleEquals("Login");
+    public void testCurrentPage() {
+        beginAt("Current.html"); 
+        assertTitleEquals("Current");
+        assertLinkPresent("");
+        clickLink("");
+        assertTitleEquals("");
+    }
+    
+    @Test
+    public void testFAQPage() {
+        beginAt("FAQ.html"); 
+        assertTitleEquals("FAQ!");
+        
+        assertLinkPresent("Source1");
+        clickLink("Source1");
+        assertTitleEquals("");
+        
+        assertLinkPresent("Source2");
+        clickLink("Source2");
+        assertTitleEquals("");
+        
+        assertLinkPresent("Source3");
+        clickLink("Source3");
+        assertTitleEquals("");
     }
 }
