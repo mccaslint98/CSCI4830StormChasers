@@ -4,16 +4,47 @@
 	<head>
 		<title> My Webpage!</title>
 		<link rel="stylesheet" type="text/css" href="./styles/styles.css">
-		<script async src ='./javascript/index.js'></script>
+		<script async src ='../js/index.js'></script>
 		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+/* Create two unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+.left {
+  width: 10%;
+}
+.right {
+  width: 90%;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+</style>
+
 	</head>
 	<body>
-		<h1>Stormchasers</h1>
+		<h2>Storm Chasers</h2>
+		<h4 id='date'></h4>
 		<table style="width:100%">
-			<tr>
+			<tr style="color:white;">
 				<th>Weather Predictions</th>
 				<th>Weather History</th> 
-				<th>FAQ/About</th>
+				<th><a href="./FAQ.html" style="color: white;">FAQ/About</a></th>
 				<th></th>
 			</tr>
 			<tr>
@@ -29,6 +60,179 @@
 				<td></td>
 			</tr>
 		</table>
-		<!-- <h4 id='date'></h4> -->
+		 
+		<h2>Weather Predictions - Single Source</h2>
+
+<div class="row">
+  <div class="column left" style=" border-collapse: collapse; border:1px solid black;">
+	<p>City:</p>
+<p style="background-color: black; color: white; "> <Strong> Select:</Strong></p>
+
+<form action="/action_page.php">
+  <input type="radio" name="city" value="Omaha" checked> Omaha<br>
+  <input type="radio" name="city" value="Lincoln"> Lincoln<br>
+
+  <p style="background-color: black; color: white;"> <Strong> Source:</Strong></p>
+	
+  <input type="radio" name="source" value="Source1"checked> Source1<br>
+  <input type="radio" name="source" value="Source2"> Source2<br>
+  <input type="radio" name="source" value="Source3"> Source3<br>
+  <input type="radio" name="source" value="All Sources"> All Sources<br>
+  <br>
+  <input type="submit">
+</form> 
+ </div>
+  <div class="column right">
+   
+	<h2 style="text-align:center;"> Omaha Current Temperature - Source 1</h2>
+	<span style = "white-space:nowrap; margin-left:38%">Current temp:</span>
+	<span style = "white-space:nowrap; font-size: 400%">72&#176 </span>
+	<table id="hiloprecip" style=" width: 18%; float:right; margin-right:25%;">
+			<tr>
+				<td><b>High</b></td>
+				<td>80&#176</td>
+			</tr>
+			<tr>
+				<td><b>Low</b></td>
+				<td>60&#176</td>
+			</tr>
+			<tr>
+				<td><b>Precipitation</b></td>
+				<td>72%</td>
+			</tr>
+			
+		<table id="hourlyTable" style="width:100%">
+			<tr style="color:white;">
+				<th>Time</th>
+				<th>1AM</th> 
+				<th>2AM</th>
+				<th>3AM</th>
+				<th>4AM</th>
+				<th>5AM</th>
+				<th>6AM</th>
+				<th>7AM</th>
+				<th>8AM</th>
+				<th>9AM</th>
+				<th>10AM</th>
+				<th>11AM</th>
+				<th>12PM</th>
+				<th>1PM</th>
+				<th>2PM</th>
+				<th>3PM</th>
+				<th>4PM</th>
+				<th>5PM</th>
+				<th>6PM</th>
+				<th>7PM</th>
+				<th>8PM</th>
+				<th>9PM</th>
+				<th>10PM</th>
+				<th>11PM</th>
+				<th>12AM</th>
+			</tr>
+			<tr>
+				<td><b>Temp</b></td>
+				<td>72&#176</td> 
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				
+			</tr>
+			<tr>
+					<td><b>Precip.</b></td>
+					<td>80%</td> 
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					
+				</tr>
+		</table>
+		<p></p>
+		<table id="hourlyTable" style="width:100%">
+			<tr style="color:white;">
+				<th>Day</th>
+				<th>Mon</th> 
+				<th>Tues</th>
+				<th>Wed</th>
+				<th>Thurs</th>
+				<th>Fri</th>
+				<th>Sat</th>
+				<th>Sun</th>
+			</tr>
+			<tr>
+				<td><b>High</b></td>
+				<td>72&#176</td> 
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				
+			</tr>
+			<tr>
+				<td><b>Low</b></td>
+				<td>72&#176</td> 
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>
+				<td>72&#176</td>	
+			</tr>
+			<tr>
+				<td><b>Precip.</b></td>
+				<td>80%</td> 
+				<td>80%</td>
+				<td>80%</td>
+				<td>80%</td>
+				<td>80%</td>
+				<td>80%</td>
+				<td>80%</td>	
+			</tr>
+		</table>
+
+  </div>
+</div>
+
 	</body>
 </html>
