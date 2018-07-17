@@ -23,7 +23,7 @@ public class WeatherService implements Service<Response> {
                 .queryParam("city","Lincoln")
                 .queryParam("mode", "json")
                 .queryParam("units", "metric")
-                .queryParam("appid", "xxxxxxxxxxxxxxxxxxxxxxx");
+                .queryParam("appid", "32604cc8b2080d042080972b59242e1b");
            
     }
 
