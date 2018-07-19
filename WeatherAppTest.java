@@ -42,7 +42,7 @@ public class WeatherAppTest{
     public void testCurrentPage() {
         beginAt("Current.html"); 
         assertTitleEquals("Current");
-        assertLinkPresent("");
+        assertLinkPresentWithText("");
         clickLink("");
         assertTitleEquals("");
     }
@@ -54,15 +54,15 @@ public class WeatherAppTest{
         
         assertLinkPresent("Source1");
         clickLink("Source1");
-        assertTitleEquals("");
+        assertTitleEquals("Current weather and forecast - OpenWeatherMap");
         
         assertLinkPresent("Source2");
         clickLink("Source2");
-        assertTitleEquals("");
+        assertTextEquals("Numerical Weather Prediction");
         
         assertLinkPresent("Source3");
         clickLink("Source3");
-        assertTitleEquals("");
+        assertTitleEquals("Dark Sky - 260 Broadway, New York City, NY");
         }
     
         @Test
