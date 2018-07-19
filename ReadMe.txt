@@ -1,1 +1,1 @@
-Site is hosted at: https://mccaslint98.github.io/CSCI4830StormChasers/
+Site is hosted at: https://stormchaserweather.herokuapp.com/
