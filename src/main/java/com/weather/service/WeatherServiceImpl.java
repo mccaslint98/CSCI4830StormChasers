@@ -21,7 +21,7 @@ public class WeatherServiceImpl implements WeatherService {
         urlbuilder = UriComponentsBuilder.newInstance()
                 .scheme("http")
                 .host("api.openweathermap.org")
-                .path("/data/2.5/forecast/daily")
+                .path("/data/2.5/forecast")
                 .queryParam("cnt", "3")
                 .queryParam("mode", "json")
                 .queryParam("units", "metric")
