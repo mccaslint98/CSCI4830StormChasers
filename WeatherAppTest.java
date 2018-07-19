@@ -25,14 +25,14 @@ public class WeatherAppTest{
     }
 
     @Test
-    public void testFrontPage() {
-        beginAt("index.jsp"); 
+    public void testIndexPage() {
+        beginAt("index.html"); 
         
         assertTitleEquals("stormchaserweather.herokuapp.com");
-        assertLinkPresent("FAQ");
-        assertLinkPresent("Current");
+        assertLinkPresentWithText("FAQ/About");
+        assertLinkPresentWithText("Current");
         
-        clickLink("FAQ");
+        clickLink("FAQ/About");
         assertTitleEquals("FAQ!");
         clickLink("current");
         assertTitleEquals("current");
@@ -63,5 +63,18 @@ public class WeatherAppTest{
         assertLinkPresent("Source3");
         clickLink("Source3");
         assertTitleEquals("");
+        }
+    
+        @Test
+        public void testRadioButton() {
+        beginAt("index.html");
+        assertRadioOptionPresent("City","Omaha");
+        assertRadioOptionPresent("City","Lincoln");
+        assertRadioOptionPresent("Source","Source1");
+        assertRadioOptionPresent("Source","Source2");
+        assertRadioOptionPresent("Source","Source3");
+        assertRadioOptionSelected("City","Omaha");
+        assertRadioOptionSelected("Source","Source1");
+        submit();
     }
 }
