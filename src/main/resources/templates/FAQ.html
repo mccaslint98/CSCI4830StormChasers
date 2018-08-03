@@ -4,7 +4,7 @@
     <head>
         <title> FAQ!</title>
         <link rel="stylesheet" type="text/css" href="styles.css"/>
-        <script src="index.js"></script>
+        <script async src="index.js"></script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <style>
@@ -17,35 +17,24 @@
     <body>
         <h2>Storm Chasers</h2>
         <h4 id='date'></h4>
-        <table style="width:100%">
-            <tr style="color:white;">
-                <th>Weather Predictions</th>
-                <th>Weather History</th> 
-                <th><a href="/faq" style="color: white;">FAQ/About</a></th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>Single Source</td>
-                <td>Past Week</td> 
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Source Comparison</td>
-                <td>Record Highs/Lows</td> 
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
+		<h4>Omaha Current Temperature: 72&#176</h4>
+		<table style="width:100%">
+			<tr style="color:white;">
+				<th><a href="/singlesource" style="color: white;">Weather Predictions - Single Source</th>
+				<th><a href="./" style="color: white;">Weather Predictions - Source Comparison</th>
+				<th><a href="/history" style="color: white;">Weather History</th> 
+				<th><a href="/faq" style="color: white;">FAQ/About</a></th>
+			</tr>
+		</table>
 
         <br/><br/>
 
         <div style="text-align:center;">
             <h2>FAQ/About</h2>
             <h3>  Sources:</h3>
-            <a href="https://openweathermap.org" target="_blank" style="color: black;">Source1</a>
-            <a href="https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/numerical-weather-prediction" target="_blank" style="color: black;">Source2</a>
-            <a href="https://darksky.net/forecast/40.7127,-74.0059/us12/en" target="_blank" style="color: black;">Source3</a>
+            <a href="https://openweathermap.org" target="_blank" style="color: black;">Open Weather Map</a><br>
+            <a href="https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/numerical-weather-prediction" target="_blank" style="color: black;">NOAA</a><br>
+            <a href="https://darksky.net/forecast/40.7127,-74.0059/us12/en" target="_blank" style="color: black;">Dark Sky</a>
             <br/><br/>
 
             <h3>  Developers:</h3>

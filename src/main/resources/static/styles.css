@@ -20,10 +20,10 @@ th {
 	background-color: #5480c7;
 }
 
-tr:nth-child(2) {
+tr:nth-child(even) {
     background-color: #cbcbfc;
 }
-tr:nth-child(3) {
+tr:nth-child(odd) {
     background-color: #eceff8;
 }
 

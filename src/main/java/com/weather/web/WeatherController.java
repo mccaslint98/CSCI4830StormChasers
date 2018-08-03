@@ -57,8 +57,19 @@ public class WeatherController {
         return "FAQ";
     }
 
-    @GetMapping("/cur")
-    public String cur() {
-        return "Current";
+    @GetMapping("/singlesource")
+    public String singleSource() {
+        return "singlesource";
     }
+
+    @GetMapping("/sourcecomparison")
+    public String sourceComparison() {
+        return "/sourcecomparison";
+    }
+
+    @GetMapping("/history")
+    public String history() {
+        return "/history";
+    }
+
 }
