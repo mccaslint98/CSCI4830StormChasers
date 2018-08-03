@@ -62,14 +62,9 @@ public class WeatherController {
         return "singlesource";
     }
 
-    @GetMapping("/sourcecomparison")
-    public String sourceComparison() {
-        return "/sourcecomparison";
-    }
-
     @GetMapping("/history")
     public String history() {
-        return "/history";
+        return "history";
     }
 
 }
