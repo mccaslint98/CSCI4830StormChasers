@@ -66,5 +66,9 @@ public class WeatherController {
     public String history() {
         return "history";
     }
-
+   
+    @ExceptionHandler(value = Exception.class)
+    public String handleException(Exception e){
+        return Pages.ERROR;
+    }
 }
