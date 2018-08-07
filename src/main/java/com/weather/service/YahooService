@@ -12,7 +12,7 @@ import javax.xml.bind.JAXBException;
 import java.util.HashMap;
 
 @Service
-public class YahooService extends YahooWeatherService implements IWeatherService<Channel> {
+public class YahooService extends YahooWeatherService implements WeatherService<Channel> {
 
     private static final HashMap<String, String> woeIds;
     static {
