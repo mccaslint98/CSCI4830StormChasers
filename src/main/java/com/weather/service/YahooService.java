@@ -14,7 +14,7 @@ public class YahooService extends YahooWeatherService { //implements WeatherServ
 
     static {
 
-        VOEIDS = new HashMap<>();
+        VOEIDS = new HashMap();
         VOEIDS.put("lincoln", "2439482");
         VOEIDS.put("omaha", "2465512");
 
