@@ -17,7 +17,7 @@ public class Controller {
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private WeatherService<Channel> yahooService;
+    private WeatherService<Channel> YahooService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
