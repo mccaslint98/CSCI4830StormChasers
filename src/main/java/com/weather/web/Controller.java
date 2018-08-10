@@ -32,7 +32,7 @@ public class Controller {
         model.addAttribute("currentWeather", yahooResponse.getItem().getCondition());
         model.addAttribute("forecasts", yahooResponse.getItem().getForecasts());
 
-        return ResponseEntity.ok(weatherService.getDailytForecast(city));
+        return Pages.FORECAST;
 
     }
 
