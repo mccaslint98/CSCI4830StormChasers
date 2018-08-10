@@ -1,7 +1,5 @@
 package com.weather.web;
 
-import java.util.HashMap;
-
 public class Pages {
 
     public static final String INDEX = "index";

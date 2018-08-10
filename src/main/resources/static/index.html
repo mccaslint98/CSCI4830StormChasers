@@ -1,203 +1,205 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<title> My Webpage!</title>
-		<link rel="stylesheet" type="text/css" href="styles.css"/>
-		<script async src="index.js"></script>
-		
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<style>
-* {
-    box-sizing: border-box;
-}
+    <head>
+        <title> My Webpage!</title>
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
+        <script async src="index.js"></script>
 
-/* Create two unequal columns that floats next to each other */
-.column {
-    float: left;
-    padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
-}
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+        <style>
+        * {
+            box-sizing: border-box;
+        }
 
-.left {
-  width: 10%;
-}
+        /* Create two unequal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+            height: 300px; /* Should be removed. Only for demonstration */
+        }
 
-.right {
-  width: 90%;
-}
+        .left {
+          width: 10%;
+        }
 
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
+        .right {
+          width: 90%;
+        }
 
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
-    }
-}
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
 
-</style>
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+            }
+        }
 
-	</head>
-	<body>
-		<h2>Storm Chasers</h2>
-		<h4 id='date'></h4>
-		<h4>Omaha Current Temperature: 72&#176</h4>
-		<table style="width:100%">
-			<tr style="color:white;">
-				<th><a href="/singlesource" style="color: white;">Weather Predictions - Single Source</th>
-				<th><a href="./" style="color: white;">Weather Predictions - Source Comparison</th>
-				<th><a href="/history" style="color: white;">Weather History</th> 
-				<th><a href="/faq" style="color: white;">FAQ/About</a></th>
-				
-			</tr>
-		</table>
+        </style>
+
+    </head>
+    <body>
+        <h2>Storm Chasers</h2>
+        <h4 id='date'></h4>
+        <h4>Omaha Current Temperature: th:utext="${curTemp}"&#176</h4>
+        
+        <table style="width:100%">
+            <tr style="color:white;">
+                <th><a href="/singlesource" style="color: white;">Weather Predictions - Single Source</th>
+                <th><a href="./" style="color: white;">Weather Predictions - Source Comparison</th>
+                <th><a href="/history" style="color: white;">Weather History</th> 
+                <th><a href="/faq" style="color: white;">FAQ/About</a></th>
+
+            </tr>
+        </table>
 		 
-		<h2>Weather Predictions - Source Comparison</h2>
+        <h2>Weather Predictions - Source Comparison</h2>
 
-<div class="row">
-  <div class="column left" style=" border-collapse: collapse;">
-	<p>City:</p>
-<p style="background-color: black; color: white;"> <Strong> Select:</Strong></p>
+        <div class="row">
+            <div class="column left" style=" border-collapse: collapse;">
+                <p>City:</p>
+                <p style="background-color: black; color: white;"> <Strong> Select:</Strong></p>
 
-<form action="/action_page.php">
-  <input type="radio" name="city" value="Omaha" checked=""/> Omaha<br/>
-  <input type="radio" name="city" value="Lincoln"/> Lincoln<br/>
+                <form action="/action_page.php">
+                    <input type="radio" name="city" value="Omaha" checked=""/> Omaha<br/>
+                    <input type="radio" name="city" value="Lincoln"/> Lincoln<br/>
 
-  <p style="background-color: black; color: white;"> <Strong> Source:</Strong></p>
-	
-  <input type="radio" name="source" value="OWM" checked=""/> OWM<br/>
-  <input type="radio" name="source" value="DarkSky"/> DarkSky<br/>
-  <input type="radio" name="source" value="NOAA"/> NOAA<br/>
-  <input type="radio" name="source" value="All Sources"/> All Sources<br/>
-  <br/>
-  <input type="submit"/>
-</form> 
+                    <p style="background-color: black; color: white;"> <Strong> Source:</Strong></p>
 
-  </div>
-  <div class="column right">
+                    <input type="radio" name="source" value="OWM" checked=""/> OWM<br/>
+                    <input type="radio" name="source" value="DarkSky"/> DarkSky<br/>
+                    <input type="radio" name="source" value="NOAA"/> NOAA<br/>
+                    <input type="radio" name="source" value="All Sources"/> All Sources<br/>
+                    <br/>
+                    <input type="submit"/>
+                </form> 
+            </div>
+  
+            <div class="column right">
    
-	<h2> Omaha Current Temperature</h2>
+                <h2> Omaha Current Temperature</h2>
 		<table id="hourlyTable" style="width:100%">
-			<tr style="color:white;">
-				<th>Time</th>
-				<th>1AM</th> 
-				<th>2AM</th>
-				<th>3AM</th>
-				<th>4AM</th>
-				<th>5AM</th>
-				<th>6AM</th>
-				<th>7AM</th>
-				<th>8AM</th>
-				<th>9AM</th>
-				<th>10AM</th>
-				<th>11AM</th>
-				<th>12PM</th>
-				<th>1PM</th>
-				<th>2PM</th>
-				<th>3PM</th>
-				<th>4PM</th>
-				<th>5PM</th>
-				<th>6PM</th>
-				<th>7PM</th>
-				<th>8PM</th>
-				<th>9PM</th>
-				<th>10PM</th>
-				<th>11PM</th>
-				<th>12AM</th>
-			</tr>
-			<tr>
-				<td><b>OWM</b></td>
-				<td>72&#176;</td> 
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				<td>72&#176;</td>
-				
-			</tr>
-			<tr>
-					<td><b>Darksky</b></td>
-					<td>72&#176;</td> 
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					<td>72&#176;</td>
-					
-				</tr>
-				<tr>
-						<td><b>NOAA</b></td>
-						<td>72&#176;</td> 
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
-						<td>72&#176;</td>
+                    <tr style="color:white;">
+                        <th>Time</th>
+                        <th>1AM</th> 
+                        <th>2AM</th>
+                        <th>3AM</th>
+                        <th>4AM</th>
+                        <th>5AM</th>
+                        <th>6AM</th>
+                        <th>7AM</th>
+                        <th>8AM</th>
+                        <th>9AM</th>
+                        <th>10AM</th>
+                        <th>11AM</th>
+                        <th>12PM</th>
+                        <th>1PM</th>
+                        <th>2PM</th>
+                        <th>3PM</th>
+                        <th>4PM</th>
+                        <th>5PM</th>
+                        <th>6PM</th>
+                        <th>7PM</th>
+                        <th>8PM</th>
+                        <th>9PM</th>
+                        <th>10PM</th>
+                        <th>11PM</th>
+                        <th>12AM</th>
+                    </tr>
+                    
+                    <tr>
+                        <td><b>OWM</b></td>
+                        <td>72&#176;</td> 
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>				
+                    </tr>
+                    <tr>
+                        <td><b>Darksky</b></td>
+                        <td>72&#176;</td> 
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>					
+                    </tr>
+                    
+                    <tr>
+                        <td><b>NOAA</b></td>
+                        <td>72&#176;</td> 
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
+                        <td>72&#176;</td>
 						
-					</tr>
+                    </tr>
 		</table>
 
-  </div>
-</div>
+            </div>
+        </div>
 
-	</body>
+    </body>
 </html>

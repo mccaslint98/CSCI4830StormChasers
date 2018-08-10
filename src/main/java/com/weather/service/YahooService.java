@@ -1,25 +1,22 @@
 package com.weather.service;
 
-import com.weather.service.WeatherServiceImpl;
-
 import com.github.fedy2.weather.YahooWeatherService;
 import com.github.fedy2.weather.data.Channel;
 import com.github.fedy2.weather.data.unit.DegreeUnit;
+import java.util.HashMap;
+import javax.xml.bind.JAXBException;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import javax.xml.bind.JAXBException;
-import java.util.HashMap;
-
 @Service
-public class YahooService extends YahooWeatherService implements WeatherService<Channel> {
+public class YahooService extends YahooWeatherService { //implements WeatherService<Channel> {
 
-    private static final HashMap<String, String> woeIds;
+    private static final HashMap<String, String> VOEIDS;
+
     static {
 
-        woeIds = new HashMap<>();
-        woeIds.put("lincoln", "2439482");
-        woeIds.put("omaha", "2465512");
+        VOEIDS = new HashMap<>();
+        VOEIDS.put("lincoln", "2439482");
+        VOEIDS.put("omaha", "2465512");
 
     }
 
@@ -27,8 +24,11 @@ public class YahooService extends YahooWeatherService implements WeatherService<
         super();
     }
 
-    @Override
-    public Channel getForecast(String city) throws Exception {
-        return getForecast(woeIds.get(city), DegreeUnit.CELSIUS);
+    public Channel getDailytForecast(String city) throws Exception {
+
+        Channel ch = getForecast(VOEIDS.get(city), DegreeUnit.CELSIUS);
+        return ch;
+
     }
+
 }
