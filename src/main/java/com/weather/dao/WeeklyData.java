@@ -5,23 +5,16 @@
  */
 package com.weather.dao;
 import lombok.Data;
-
+import java.util.LinkedList;
 /**
  *
- * @author yifan
+ * @author xy
  */
 @Data
-public class DailyData {
+public class WeeklyData {
     
     
-    private Float temp_high;
-    
-    private Float temp_low;
-
-    private int  hour;
-
-    private Float Precipitation;
+    private java.util.List<DailyData> WeeklyData = new LinkedList<>();
     
     
-
 }

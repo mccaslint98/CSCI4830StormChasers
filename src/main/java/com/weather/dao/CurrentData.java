@@ -4,24 +4,16 @@
  * and open the template in the editor.
  */
 package com.weather.dao;
-import lombok.Data;
+import com.github.fedy2.weather.data.Channel;
 
+import lombok.Data;
 /**
  *
- * @author yifan
+ * @author xxxxy
  */
 @Data
-public class DailyData {
-    
-    
-    private Float temp_high;
-    
-    private Float temp_low;
+public class CurrentData {
 
-    private int  hour;
-
-    private Float Precipitation;
+         Channel ch;
     
-    
-
 }
