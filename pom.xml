@@ -41,6 +41,12 @@
           <artifactId>yahoo-weather-java-api</artifactId>
           <version>2.0.2</version>
         </dependency>
+        
+        <dependency>
+            <groupId>com.github.dvdme</groupId>
+            <artifactId>ForecastIOLib</artifactId>
+            <version>LATEST</version>
+        </dependency>
                 
         <!--Test-->
         <dependency>

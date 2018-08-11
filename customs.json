@@ -1,0 +1,8 @@
+{
+    "elements": {},
+    "attributes": {
+        "th:utext": {
+            "context": "span"
+        }
+    }
+}
