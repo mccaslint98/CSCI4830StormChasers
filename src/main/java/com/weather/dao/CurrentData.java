@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package com.weather.dao;
-import com.github.fedy2.weather.data.Channel;
-
+//import com.github.fedy2.weather.data.Channel;
+import com.weather.service.YahooService;
 import lombok.Data;
 /**
  *
@@ -13,7 +13,9 @@ import lombok.Data;
  */
 @Data
 public class CurrentData {
-
-         Channel ch;
+    
+        private YahooService ch;
+        private YahooService date;
+        
     
 }

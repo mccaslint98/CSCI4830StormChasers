@@ -5,6 +5,7 @@
  */
 package com.weather.dao;
 import lombok.Data;
+import com.weather.service.YahooService;
 
 /**
  *
@@ -14,13 +15,17 @@ import lombok.Data;
 public class DailyData {
     
     
-    private Float temp_high;
-    
-    private Float temp_low;
 
-    private int  hour;
+
+   YahooService date;
 
     private Float Precipitation;
+    
+    YahooService tp ;
+    
+    YahooService temp_high;
+    
+    YahooService temp_low;
     
     
 
