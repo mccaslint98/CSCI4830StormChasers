@@ -27,9 +27,9 @@ public class YahooService extends YahooWeatherService { //implements WeatherServ
 
     }
 
-    public YahooService() throws JAXBException {
-        super();
-    }
+    //public YahooService() throws JAXBException {
+        //super();
+    //}
 
     public Channel getDailytForecast(String city) throws Exception {
         
