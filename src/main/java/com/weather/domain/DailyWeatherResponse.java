@@ -16,10 +16,14 @@ public class DailyWeatherResponse {
 
     private Rain rain;
 
+    private long dt;
+
     private Sys sys;
 
     private int id;
 
     private String name;
+
+    private int cod;
 
 }
