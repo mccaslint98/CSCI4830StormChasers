@@ -27,9 +27,9 @@ public class YahooService extends YahooWeatherService { //implements WeatherServ
 
     }
 
-    //public YahooService() throws JAXBException {
-        //super();
-    //}
+    public YahooService() throws JAXBException {
+        super();
+    }
 
     public Channel getDailytForecast(String city) throws Exception {
         
@@ -38,7 +38,7 @@ public class YahooService extends YahooWeatherService { //implements WeatherServ
         ch = getForecast(VOEIDS.get(city), DegreeUnit.FAHRENHEIT);
   
         return ch;
-       }
+     }
    
     public  Condition getDate()throws Exception{
         Condition date = getDate();
