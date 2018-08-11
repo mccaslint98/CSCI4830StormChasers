@@ -1,0 +1,5 @@
+com.weather
+com.weather.dao
+com.weather.domain
+com.weather.service
+com.weather.web
