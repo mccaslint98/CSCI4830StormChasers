@@ -6,6 +6,7 @@
 package com.weather.web;
 
 import com.github.fedy2.weather.data.Channel;
+import com.github.fedy2.weather.data.Item;
 import com.weather.service.YahooService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,7 +50,12 @@ public class WeatherController {
     }
 
     @GetMapping("/singlesource")
-    public String singleSource() {
+    public String singleSource(Model model) throws Exception {
+        Channel yahooResponse = yahooService.getDailytForecast("omaha");
+        Item item = yahooResponse.getItem();
+        model.addAttribute("curTemp", item.getCondition().getTemp() * 1.8 + 32);
+        model.addAttribute("tempHigh", item.getForecasts().get(0).getHigh() * 1.8 + 32);
+        model.addAttribute("tempLow", item.getForecasts().get(0).getLow() * 1.8 + 32);
         return "singlesource";
     }
 

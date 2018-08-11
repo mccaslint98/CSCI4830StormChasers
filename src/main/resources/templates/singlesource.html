@@ -40,7 +40,11 @@
     <body>
         <h2>Storm Chasers</h2>
         <h4 id='date'></h4>
-        <h4>Omaha Current Temperature: 72&#176</h4>
+        <h4>Omaha Current Temperature: <span th:utext="${curTemp}"> </span>&#176F 
+            High: <span th:utext="${tempHigh}"> 72</span>&#176F
+            Low: <span th:utext="${tempLow}"> 72</span>&#176F
+            Precipitation: <span th:utext="${precip}"> 30</span>%
+        </h4>
         <table style="width:100%">
             <tr style="color:white;">
                 <th><a href="/singlesource" style="color: white;">Weather Predictions - Single Source</th>
@@ -57,38 +61,25 @@
                 <p>City:</p>
                 <p style="background-color: black; color: white; "> <Strong> Select:</Strong></p>
 
-                <form action="/action_page.php">
-                    <input type="radio" name="city" value="Omaha" checked> Omaha<br>
-                    <input type="radio" name="city" value="Lincoln"> Lincoln<br>
-
+                <form action="#" th:action="@{/singleSourceSubmit}" th:object="${citySourceConf}" method="post">
+                    <div>
+                        <input type="radio" name="city" value="Omaha" checked> Omaha<br>
+                        <input type="radio" name="city" value="Lincoln"> Lincoln<br>
+                    </div>
                     <p style="background-color: black; color: white;"> <Strong> Source:</Strong></p>
 
-                    <input type="radio" name="source" value="Source1" checked> OWM<br>
-                    <input type="radio" name="source" value="Source2"> DarkSky<br>
-                    <input type="radio" name="source" value="Source3"> NOAA<br>
-                    <input type="radio" name="source" value="All Sources"> All Sources<br>
+                    <div>
+                        <input type="radio" name="source" value="Source1" checked> OWM<br>
+                        <input type="radio" name="source" value="Source2"> DarkSky<br>
+                        <input type="radio" name="source" value="Source3"> NOAA<br>
+                    </div>
                     <br>
                     <input type="submit">
                 </form> 
             </div>
             
             <div class="column right">   
-                <h2 style="text-align:center;"> Omaha Current Temperature - Source 1</h2>
-                <span style = "white-space:nowrap; margin-left:38%">Current temp:</span>
-                <span style = "white-space:nowrap; font-size: 400%">72&#176 </span>
-                <table id="hiloprecip" style=" width: 18%; float:right; margin-right:25%;">
-                    <tr style="color:white;">
-                        <th><b>High</b></th>
-                        <th>80&#176</th>
-                    </tr>
-                    <tr>
-                        <td><b>Low</b></td>
-                        <td>60&#176</td>
-                    </tr>
-                    <tr>
-                        <td><b>Precipitation</b></td>
-                        <td>72%</td>
-                    </tr>
+                <h2 style="text-align:center;"> Omaha Current Temperature - <span th:utext="${selectSource}">Source 1 </span></h2>
 			
 		<table id="hourlyTable" style="width:100%">
                     <tr style="color:white;">
