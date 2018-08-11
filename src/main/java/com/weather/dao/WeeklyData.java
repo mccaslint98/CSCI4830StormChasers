@@ -5,28 +5,16 @@
  */
 package com.weather.dao;
 import lombok.Data;
-import com.weather.service.YahooService;
-
+import java.util.LinkedList;
 /**
  *
- * @author yifan
+ * @author xy
  */
 @Data
-public class DailyData {
+public class WeeklyData {
     
     
-
-
-   YahooService date;
-
-    private Float Precipitation;
-    
-    YahooService tp ;
-    
-    YahooService temp_high;
-    
-    YahooService temp_low;
+    private java.util.List<DailyData> WeeklyData = new LinkedList<>();
     
     
-
 }

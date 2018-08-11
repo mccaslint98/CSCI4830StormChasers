@@ -4,29 +4,18 @@
  * and open the template in the editor.
  */
 package com.weather.dao;
-import lombok.Data;
+//import com.github.fedy2.weather.data.Channel;
 import com.weather.service.YahooService;
-
+import lombok.Data;
 /**
  *
- * @author yifan
+ * @author xxxxy
  */
 @Data
-public class DailyData {
+public class CurrentData {
     
+        private YahooService ch;
+        private YahooService date;
+        
     
-
-
-   YahooService date;
-
-    private Float Precipitation;
-    
-    YahooService tp ;
-    
-    YahooService temp_high;
-    
-    YahooService temp_low;
-    
-    
-
 }
