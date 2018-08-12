@@ -4,18 +4,30 @@
  * and open the template in the editor.
  */
 package com.weather.dao;
-//import com.github.fedy2.weather.data.Channel;
-import com.weather.service.YahooService;
+
+import java.util.Date;
 import lombok.Data;
+
 /**
  *
  * @author xxxxy
  */
 @Data
 public class CurrentData {
-    
-        private YahooService ch;
-        private YahooService date;
-        
-    
+
+    private Date date;
+
+    private Integer temp;
+    private Integer low;
+    private Integer high;
+    private Double precipProbability;
+
+    public CurrentData(Date inDate, Integer inTemp, Integer inHigh, Integer inLow, Double inPrecip) {
+        setDate(inDate);
+        setTemp(inTemp);
+        setLow(inLow);
+        setHigh(inHigh);
+        setPrecipProbability(inPrecip);
+    }
+
 }

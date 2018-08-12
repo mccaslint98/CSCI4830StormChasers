@@ -13,18 +13,12 @@ import lombok.Data;
  * @author yifan
  */
 @Data
-public class DailyData {
+public class HourlyData {
 
+    private Integer hour;
     private Date date;
 
-    private HourlyData[] hourly;
-
-    public DailyData(Date inDate, HourlyData[] inHourly) {
-        setDate(inDate);
-        setHourly(inHourly);
-    }
-
-    public DailyData() {
-    }
+    private Integer temp;
+    private Double precip;
 
 }

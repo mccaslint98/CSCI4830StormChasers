@@ -5,8 +5,7 @@
  */
 package com.weather.web;
 
-import com.github.fedy2.weather.data.Channel;
-import com.github.fedy2.weather.data.Item;
+import com.weather.dao.CurrentData;
 import com.weather.service.YahooService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,8 +38,8 @@ public class WeatherController {
     //public String getForecast(@PathVariable("city") String city) throws Exception {
     public String getForecast(Model model) throws Exception {
 
-        Channel yahooResponse = yahooService.getDailytForecast("omaha");
-        model.addAttribute("curTemp", yahooResponse.getItem().getCondition().getTemp() * 1.8 + 32);
+        yahooService.getDailytForecast("omaha");
+        model.addAttribute("curTemp", yahooService.getCurrent().getTemp());
         return "home";
     }
 
@@ -51,11 +50,12 @@ public class WeatherController {
 
     @GetMapping("/singlesource")
     public String singleSource(Model model) throws Exception {
-        Channel yahooResponse = yahooService.getDailytForecast("omaha");
-        Item item = yahooResponse.getItem();
-        model.addAttribute("curTemp", item.getCondition().getTemp() * 1.8 + 32);
-        model.addAttribute("tempHigh", item.getForecasts().get(0).getHigh() * 1.8 + 32);
-        model.addAttribute("tempLow", item.getForecasts().get(0).getLow() * 1.8 + 32);
+        yahooService.getDailytForecast("omaha");
+        CurrentData currentData = yahooService.getCurrent();
+
+        model.addAttribute("curTemp", currentData.getTemp());
+        model.addAttribute("tempHigh", currentData.getHigh());
+        model.addAttribute("tempLow", currentData.getLow());
         return "singlesource";
     }
 
