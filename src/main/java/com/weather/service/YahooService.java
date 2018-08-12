@@ -6,7 +6,9 @@ import com.github.fedy2.weather.data.Forecast;
 import com.github.fedy2.weather.data.unit.DegreeUnit;
 import com.weather.dao.CurrentData;
 import com.weather.dao.DailyData;
+import com.weather.dao.HourlyData;
 import com.weather.dao.WeeklyData;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,6 +20,8 @@ public class YahooService extends YahooWeatherService { //implements WeatherServ
 
     private static final HashMap<String, String> VOEIDS;
     private Channel ch;
+
+    private DailyData daily;
 
     static {
 
@@ -37,7 +41,13 @@ public class YahooService extends YahooWeatherService { //implements WeatherServ
     }
 
     public DailyData getDaily() {
-        return new DailyData();
+        HourlyData[] hourly = new HourlyData[24];
+        Date date = new Date();
+        for (int i = 0; i < 24; i++) {
+            hourly[i] = new HourlyData(i, date, (72 + i), new Double(0));
+        }
+        daily = new DailyData(date, hourly);
+        return daily;
     }
 
     public WeeklyData[] getWeekly() {

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -40,6 +41,7 @@ public class WeatherController {
 
         yahooService.getDailytForecast("omaha");
         model.addAttribute("curTemp", yahooService.getCurrent().getTemp());
+        model.addAttribute("hourlyDatas", yahooService.getDaily().getHourly());
         return "home";
     }
 
@@ -56,11 +58,20 @@ public class WeatherController {
         model.addAttribute("curTemp", currentData.getTemp());
         model.addAttribute("tempHigh", currentData.getHigh());
         model.addAttribute("tempLow", currentData.getLow());
+        model.addAttribute("hourlyDatas", yahooService.getDaily().getHourly());
+        model.addAttribute("weeklyDatas", yahooService.getWeekly());
         return "singlesource";
     }
 
+    @PostMapping("/homeSubmit")
+    public String homeSubmit(Model model) {
+        return "redirect: home";
+    }
+
     @GetMapping("/history")
-    public String history() {
+    public String history(Model model) throws Exception {
+        yahooService.getDailytForecast("omaha");
+        model.addAttribute("curTemp", yahooService.getCurrent().getTemp());
         return "history";
     }
 

@@ -21,4 +21,14 @@ public class HourlyData {
     private Integer temp;
     private Double precip;
 
+    public HourlyData(Integer inHour, Date inDate, Integer inTemp, Double inPrecip) {
+        setHour(inHour);
+        setDate(inDate);
+        setTemp(inTemp);
+        setPrecip(inPrecip);
+    }
+
+    public HourlyData() {
+    }
+
 }
