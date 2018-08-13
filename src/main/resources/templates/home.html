@@ -66,7 +66,7 @@
                 <p>City:</p>
                 <p style="background-color: black; color: white;"> <Strong> Select:</Strong></p>
 
-                <form action="#" th:object="${homeSubmit}" th:action="@{/homeSubmit}">
+                <form action="#" th:action="@{/multiForm}" th:object="${command}" method="post">
                     <fieldset>
                         <div>
                             <input type="radio" name="city" value="Omaha" checked=""/> Omaha<br/>

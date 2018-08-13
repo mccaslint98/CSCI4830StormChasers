@@ -60,7 +60,7 @@ public class YahooService extends YahooWeatherService { //implements WeatherServ
         int count = 0;
         while (itr.hasNext() && count < 7) {
             Forecast temp = itr.next();
-            weeklyData[count++] = new WeeklyData(temp.getDate(), temp.getHigh(), temp.getLow(), new Double(0.0));
+            weeklyData[count++] = new WeeklyData(temp.getDate(), temp.getLow(), temp.getHigh(), new Double(0.0));
         }
         return weeklyData;
     }
