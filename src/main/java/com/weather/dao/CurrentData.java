@@ -29,5 +29,7 @@ public class CurrentData {
         setHigh(inHigh);
         setPrecipProbability(inPrecip);
     }
+   public CurrentData(){       
+   }
 
 }
