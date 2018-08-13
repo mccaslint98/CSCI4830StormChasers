@@ -29,4 +29,7 @@ public class WeeklyData {
         setPrecip(precp);
 
     }
+    
+   public WeeklyData(){
+   }
 }
