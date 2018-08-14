@@ -19,8 +19,8 @@ import org.springframework.stereotype.Service;
 public class OWMService {
 
     private OpenWeatherMap owm;
-    //private DailyData dailyData;
-    //private WeeklyData weeklyData;
+    private DailyData dailyData;
+//    private WeeklyData weeklyData;
     private CurrentData currentData;
 
     public OWMService() {
@@ -36,5 +36,16 @@ public class OWMService {
                 (double) currentWeather.getRainInstance().getRain());
         return currentData;
     }
-
+    private DailyData getDaily() throws Exception {
+        DailyForecast dailyForecast = owm.dailyForecastByCityName("omaha");
+        dailyData = new DailyData(new Date(),
+                (int)dailyForecast.getMainInstance().getTemperature(),
+                (int) dailyForecast.getMainInstance().getMaxTemperature(),
+                (int) dailyForecast.getMainInstance().getMinTemperature());
+        return dailyData;
+    }
+//    private WeeklyData getDaily() throws Exception {
+//        
+//    }
 }
+
