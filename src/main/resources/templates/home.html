@@ -66,7 +66,7 @@
                 <p>City:</p>
                 <p style="background-color: black; color: white;"> <Strong> Select:</Strong></p>
 
-                <form action="#" th:action="@{/multiForm}" th:object="${command}" method="post">
+                <form action="#" th:action="@{/}" th:object="${command}" method="post">
                     <fieldset>
                         <div>
                             <input type="radio" name="city" value="Omaha" checked=""/> Omaha<br/>
@@ -75,6 +75,18 @@
 
                     <p style="background-color: black; color: white;"> <Strong> Source:</Strong></p>
 
+                    <ul>
+                        <li th:each="radioValue : ${singleSelectAllValues}">
+                            <input type="radio"
+                                   th:field="*{cityRadioButtonSelectedValue}"
+                                   th:value="${radioValue}" />
+                            <label
+                                th:for="${#ids.prev('cityRadioButtonSelectedValue')}"
+                                th:text="${radioValue}"></label>
+                        </li>
+                    </ul>
+                    
+                    
                     <div>
                         <input id="source1" type="checkbox" name="source" value="OWM" checked=""/> OWM<br/>
                         <input id="source2" type="checkbox" name="source" value="DarkSky"/> DarkSky<br/>

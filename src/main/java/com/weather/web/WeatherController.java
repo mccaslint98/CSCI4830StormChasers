@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -28,6 +29,8 @@ public class WeatherController {
 
     @Autowired
     private YahooService yahooService;
+    //@Autowired
+    //private DarkSkyService darkSkyService;
 
     //@RequestMapping(value = "/", method = RequestMethod.GET)
 //    public String index() {
@@ -38,7 +41,23 @@ public class WeatherController {
     //public String getForecast(Model model, @PathVariable("city") String city) throws Exception {
     //public String getForecast(@PathVariable("city") String city) throws Exception {
     public String getForecast(Model model) throws Exception {
+        //model.addAttribute("command", new MultSFormCommand());
 
+        yahooService.getDailytForecast("omaha");
+        model.addAttribute("curTemp", yahooService.getCurrent().getTemp());
+        model.addAttribute("hourlyDatas", yahooService.getDaily().getHourly());
+        return "home";
+    }
+
+    @ModelAttribute("multiCheckboxAllValues")
+    public String[] getMultiCheckboxAllValues() {
+        return new String[]{
+            "OWM", "DarkSky", "NOAA"
+        };
+    }
+
+    @PostMapping("/")
+    public String multiFormPost(@ModelAttribute MultSFormCommand command, Model model) throws Exception {
         yahooService.getDailytForecast("omaha");
         model.addAttribute("curTemp", yahooService.getCurrent().getTemp());
         model.addAttribute("hourlyDatas", yahooService.getDaily().getHourly());
@@ -54,6 +73,7 @@ public class WeatherController {
     public String singleSource(Model model) throws Exception {
         yahooService.getDailytForecast("omaha");
         CurrentData currentData = yahooService.getCurrent();
+        //CurrentData currentData = darkSkyService.getCurrent();
 
         model.addAttribute("curTemp", currentData.getTemp());
         model.addAttribute("tempHigh", currentData.getHigh());
@@ -61,11 +81,6 @@ public class WeatherController {
         model.addAttribute("hourlyDatas", yahooService.getDaily().getHourly());
         model.addAttribute("weeklyDatas", yahooService.getWeekly());
         return "singlesource";
-    }
-
-    @PostMapping("/homeSubmit")
-    public String homeSubmit(Model model) {
-        return "redirect: home";
     }
 
     @GetMapping("/history")
