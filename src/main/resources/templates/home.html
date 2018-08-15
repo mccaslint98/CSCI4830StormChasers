@@ -47,7 +47,7 @@
     <body>
         <h2>Storm Chasers</h2>
         <h4 id='date'></h4>
-        <h4>Omaha Current Temperature: <span th:utext="${curTemp}"></span>&#176F</h4>
+        <h4>Omaha Current Temperature(Dark Sky): <span th:utext="${curTemp}"></span>&#176F </h4>
         
         <table style="width:100%">
             <tr style="color:white;">
@@ -114,7 +114,7 @@
                     </tr>
                     <tr>
                         <td><b>Darksky</b></td>
-                        <td th:each="hourly : ${hourlyDatas}" th:text="${hourly.temp} + '&#176'"> </td> 					
+                        <td th:each="hourly : ${darkskyhourlyDatas}" th:text="${hourly.temp} + '&#176'"> </td> 					
                     </tr>
                     
                     <tr>
@@ -122,6 +122,55 @@
 			<td th:each="hourly : ${hourlyDatas}" th:text="${hourly.temp} + '&#176'"> </td>			
                     </tr>
 		</table>
+                
+                <table id="weeklyTable" style="width:100%">
+                    <thead>
+                    <th>Yahoo API</th>
+                    </thead>
+                    <tr style="color:white;">
+                        <th>Day</th>
+                        <th th:each="weekly : ${yahooweeklyDatas}" th:text="${weekly.date}"> </th>
+                    </tr>
+                    
+                    <tr>
+                        <td><b>High</b></td>
+                        <td th:each="weekly : ${yahooweeklyDatas}" th:text="${weekly.tempHigh} + '&#176'"> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><b>Low</b></td>
+                        <td th:each="weekly : ${yahooweeklyDatas}" th:text="${weekly.tempLow} + '&#176'"> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><b>Precip.</b></td>
+                        <td th:each="weekly : ${yahooweeklyDatas}" th:text="${weekly.precip} + '%'"> </td>
+                    </tr>
+
+                </table>
+                
+                <table id="weeklyTable" style="width:100%">
+                    <thead>
+                    <th>DarkSky API</th>
+                    </thead>
+                    
+                    <tr>
+                        <td><b>High</b></td>
+                        <td th:each="weekly : ${weeklyDatas}" th:text="${weekly.tempHigh} + '&#176'"> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><b>Low</b></td>
+                        <td th:each="weekly : ${weeklyDatas}" th:text="${weekly.tempLow} + '&#176'"> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><b>Precip.</b></td>
+                        <td th:each="weekly : ${weeklyDatas}" th:text="${weekly.precip} + '%'"> </td>
+                    </tr>
+
+                </table>
+                
 
             </div>
         </div>

@@ -16,7 +16,7 @@ import javax.xml.bind.JAXBException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class YahooService extends YahooWeatherService { //implements WeatherService<Channel> {
+public class YahooService extends YahooWeatherService implements WeatherService {
 
     private static final HashMap<String, String> VOEIDS;
     private Channel ch;
@@ -35,11 +35,15 @@ public class YahooService extends YahooWeatherService { //implements WeatherServ
         super();
     }
 
-    public void getDailytForecast(String city) throws Exception {
-
-        ch = getForecast(VOEIDS.get(city), DegreeUnit.FAHRENHEIT);
+    @Override
+    public void getDailyForecast(String city) {
+        try {
+            ch = getForecast(VOEIDS.get(city), DegreeUnit.FAHRENHEIT);
+        } catch (Exception e) {
+        }
     }
 
+    @Override
     public DailyData getDaily() {
         HourlyData[] hourly = new HourlyData[24];
         Date date = new Date();
@@ -50,6 +54,7 @@ public class YahooService extends YahooWeatherService { //implements WeatherServ
         return daily;
     }
 
+    @Override
     public WeeklyData[] getWeekly() {
 
         List<Forecast> forecasts = ch.getItem().getForecasts();
@@ -65,6 +70,7 @@ public class YahooService extends YahooWeatherService { //implements WeatherServ
         return weeklyData;
     }
 
+    @Override
     public CurrentData getCurrent() {
         int temp = ch.getItem().getCondition().getTemp();
         Forecast forecast = ch.getItem().getForecasts().get(0);

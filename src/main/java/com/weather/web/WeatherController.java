@@ -6,6 +6,8 @@
 package com.weather.web;
 
 import com.weather.dao.CurrentData;
+import com.weather.service.DarkSkyService;
+import com.weather.service.OWMService;
 import com.weather.service.YahooService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,8 +31,10 @@ public class WeatherController {
 
     @Autowired
     private YahooService yahooService;
-    //@Autowired
-    //private DarkSkyService darkSkyService;
+    @Autowired
+    private OWMService owmService;
+    @Autowired
+    private DarkSkyService darkSkyService;
 
     //@RequestMapping(value = "/", method = RequestMethod.GET)
 //    public String index() {
@@ -40,12 +44,21 @@ public class WeatherController {
     @RequestMapping("/")
     //public String getForecast(Model model, @PathVariable("city") String city) throws Exception {
     //public String getForecast(@PathVariable("city") String city) throws Exception {
-    public String getForecast(Model model) throws Exception {
+    public String getForecast(Model model) {
         //model.addAttribute("command", new MultSFormCommand());
 
-        yahooService.getDailytForecast("omaha");
-        model.addAttribute("curTemp", yahooService.getCurrent().getTemp());
+        yahooService.getDailyForecast("omaha");
         model.addAttribute("hourlyDatas", yahooService.getDaily().getHourly());
+        model.addAttribute("yahooweeklyDatas", yahooService.getWeekly());
+
+        darkSkyService.getDailyForecast("omaha");
+        CurrentData currentData = darkSkyService.getCurrent();
+        model.addAttribute("curTemp", currentData.getTemp());
+        model.addAttribute("darkskyhourlyDatas", darkSkyService.getDaily().getHourly());
+
+        model.addAttribute("weeklyDatas", darkSkyService.getWeekly());
+
+        //model.addAttribute("owmweeklyDatas", owmService.getWeekly());
         return "home";
     }
 
@@ -57,8 +70,8 @@ public class WeatherController {
     }
 
     @PostMapping("/")
-    public String multiFormPost(@ModelAttribute MultSFormCommand command, Model model) throws Exception {
-        yahooService.getDailytForecast("omaha");
+    public String multiFormPost(@ModelAttribute MultSFormCommand command, Model model) {
+        yahooService.getDailyForecast("omaha");
         model.addAttribute("curTemp", yahooService.getCurrent().getTemp());
         model.addAttribute("hourlyDatas", yahooService.getDaily().getHourly());
         return "home";
@@ -70,22 +83,24 @@ public class WeatherController {
     }
 
     @GetMapping("/singlesource")
-    public String singleSource(Model model) throws Exception {
-        yahooService.getDailytForecast("omaha");
+    public String singleSource(Model model) {
+        yahooService.getDailyForecast("omaha");
         CurrentData currentData = yahooService.getCurrent();
         //CurrentData currentData = darkSkyService.getCurrent();
 
         model.addAttribute("curTemp", currentData.getTemp());
         model.addAttribute("tempHigh", currentData.getHigh());
         model.addAttribute("tempLow", currentData.getLow());
-        model.addAttribute("hourlyDatas", yahooService.getDaily().getHourly());
         model.addAttribute("weeklyDatas", yahooService.getWeekly());
+
+        darkSkyService.getDailyForecast("omaha");
+        model.addAttribute("hourlyDatas", darkSkyService.getDaily().getHourly());
         return "singlesource";
     }
 
     @GetMapping("/history")
-    public String history(Model model) throws Exception {
-        yahooService.getDailytForecast("omaha");
+    public String history(Model model) {
+        yahooService.getDailyForecast("omaha");
         model.addAttribute("curTemp", yahooService.getCurrent().getTemp());
         return "history";
     }
